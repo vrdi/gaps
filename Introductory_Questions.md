@@ -1,4 +1,4 @@
-#Some basic mathematical questions to get us started
+# Some basic mathematical questions to get us started
 
 ## Each of these questions may admit a closed form mathematical answer, or may require simulation.
 
