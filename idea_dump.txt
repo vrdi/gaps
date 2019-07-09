@@ -1,0 +1,4 @@
+- construct silly situations to illustrate gap of means vs mean of gaps.
+- histogram of declination over ensemble
+- location of gap as well as size!
+- does the simplex sampler mimic redistricting at the level of metrics?
