@@ -18,13 +18,13 @@ pa_true_gap_file = "pa_true_gaps"
 
 ## SET PARAMS BELOW
 ## still need to change plot axes and plot names appropriately
-state_file = Pennsylvania_file
-state_gap_file = pa_gap_file
-state_left_district_file = pa_left_district_file
-state_true_gap_file = pa_true_gap_file
-state = "pa"
+state_file = Virginia_file
+state_gap_file = va_gap_file
+state_left_district_file = va_left_district_file
+state_true_gap_file = va_true_gap_file
+state = "va"
 # Virginia has 11 Congressional districts, Pennsylvania 18
-NUM_DISTRICTS = 18
+NUM_DISTRICTS = 11
 
 df = pd.read_csv(state_file.format(2000), header=None)
 for x in range(4000,100001,2000):
@@ -47,8 +47,10 @@ for x in range(4000,100001,2000):
 #
 # plt.plot([],[],color='k',label="PA Recom Ensemble")
 # plt.xlabel("Sorted districts")
-# plt.ylabel("BVAP %")
+# plt.ylabel("BPOP %")
 # plt.savefig("pa_bpop.png")
+# plt.ylabel("BVAP %")
+# plt.savefig("va_bvap.png")
 # plt.show()
 # plt.close()
 #
@@ -63,8 +65,7 @@ lower_bound = []
 upper_bound = []
 true_gaps = []
 d = {i:[] for i in range(1, NUM_DISTRICTS)}
-#for i in range(len(df.index)):
-for i in range(100):
+for i in range(len(df.index)):
     x = 0
     gap = 0
     lower = 0
@@ -95,37 +96,37 @@ true_gap_outfile.close()
 
 
 # SET NAMES OF AXES AND PLOT NAMES BELOW
-
-plt.hist(gaps, bins=100)
-plt.ylabel("Frequency")
-plt.xlabel("Largest gap in BPOP %")
-plt.axvline(x=max(true_gaps), color="red", linewidth=1)
-#plt.savefig("pa_bpop_gap.png")
-plt.show()
-plt.close()
-
-plt.scatter(gaps, left_district)
-plt.ylabel("Left district")
-plt.xlabel("Size of BVAP % gap")
-#plt.savefig("pa_bpop_size_district.png")
-plt.show()
-plt.close()
-
-plt.scatter(lower_bound, upper_bound)
-x = np.linspace(min(lower_bound) - .1, max(upper_bound) + .1, 100)
-plt.plot(x, x, '--r')
-plt.xlim([min(lower_bound) - .1, max(upper_bound) + .1])
-plt.ylim([min(lower_bound) - .1, max(upper_bound) + .1])
-plt.xlabel("Lower BVAP % value")
-plt.ylabel("Upper BVAP % value")
-#plt.savefig("pa_bpop_gap_values.png")
-plt.show()
-plt.close()
-
-plt.hist(left_district, bins=[x for x in range(1, NUM_DISTRICTS+1)])
-plt.xlabel("Left district")
-plt.ylabel("Frequency")
-plt.axvline(x=np.argmax(true_gaps)+1.5, color="red", linewidth=2)
-#plt.savefig("pa_bpop_gap_district.png")
-plt.show()
-plt.close()
+#
+# plt.hist(gaps, bins=100)
+# plt.ylabel("Frequency")
+# plt.xlabel("Largest gap in BVAP %")
+# plt.axvline(x=max(true_gaps), color="red", linewidth=1)
+# plt.savefig("va_bvap_gap.png")
+# plt.show()
+# plt.close()
+#
+# plt.scatter(gaps, left_district)
+# plt.ylabel("Left district")
+# plt.xlabel("Size of BVAP % gap")
+# plt.savefig("va_bvap_size_district.png")
+# plt.show()
+# plt.close()
+#
+# plt.scatter(lower_bound, upper_bound)
+# x = np.linspace(min(lower_bound) - .1, max(upper_bound) + .1, 100)
+# plt.plot(x, x, '--r')
+# plt.xlim([min(lower_bound) - .1, max(upper_bound) + .1])
+# plt.ylim([min(lower_bound) - .1, max(upper_bound) + .1])
+# plt.xlabel("Lower BVAP % value")
+# plt.ylabel("Upper BVAP % value")
+# plt.savefig("va_bvap_gap_values.png")
+# plt.show()
+# plt.close()
+#
+# plt.hist(left_district, bins=[x for x in range(1, NUM_DISTRICTS+1)])
+# plt.xlabel("Left district")
+# plt.ylabel("Frequency")
+# plt.axvline(x=np.argmax(true_gaps)+1.5, color="red", linewidth=2)
+# plt.savefig("va_bvap_gap_district.png")
+# plt.show()
+# plt.close()
