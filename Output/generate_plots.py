@@ -4,23 +4,28 @@ import numpy as np
 import pandas as pd
 import pickle
 
+
 Virginia_file = "../VA_Viz/Full_State/Congressional/DOJBVAP_{0}.csv"
 Pennsylvania_file = "../PA_Viz/Metrics/BPOP_{0}.csv"
-
-# set state to va or pa
-state = "pa"
-# Virginia has 11 Congressional districts, Pennsylvania 18
-NUM_DISTRICTS = 18
 
 va_gap_file = "va_gap_file"
 va_left_district_file = "va_left_district_file"
 pa_gap_file = "pa_gap_file"
 pa_left_district_file = "pa_left_district_file"
 
-# set correct state below
-df = pd.read_csv(Pennsylvania_file.format(2000), header=None)
+
+## SET PARAMS BELOW
+## still need to change plot axes and plot names appropriately
+state_file = Virginia_file
+state_gap_file = va_gap_file
+state_left_district_file = va_left_district_file
+state = "va"
+# Virginia has 11 Congressional districts, Pennsylvania 18
+NUM_DISTRICTS = 11
+
+df = pd.read_csv(state_file.format(2000), header=None)
 for x in range(4000,100001,2000):
-    df = pd.concat([df, pd.read_csv(Pennsylvania_file.format(x), header=None)], ignore_index=True)
+    df = pd.concat([df, pd.read_csv(state_file.format(x), header=None)], ignore_index=True)
 
 
 c='k'
@@ -45,8 +50,8 @@ plt.show()
 plt.close()
 #
 # set correct state for outfiles below
-gap_outfile = open(pa_gap_file, 'wb')
-left_district_outfile = open(pa_left_district_file, 'wb')
+gap_outfile = open(state_gap_file, 'wb')
+left_district_outfile = open(state_left_district_file, 'wb')
 
 # histogram for largest gap per plan
 gaps = []
