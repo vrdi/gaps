@@ -5,7 +5,7 @@ import pickle
 
 
 ## SET PARAMS
-# Virginia has 11 Congressional districts, Pennsylvania 18
+# Virginia has 11 Congressional districts, Pennsylvania 18, Mississippi 4
 state = "va"
 NUM_DISTRICTS = 11
 
@@ -18,7 +18,8 @@ d = {i:[] for i in range(1, NUM_DISTRICTS)}
 for i in range(len(gaps)):
     d[left_district[i]].append(gaps[i])
 
-# # for VA
+
+# # for VA, MS
 # for i in range(1, NUM_DISTRICTS):
 #     plt.subplot(NUM_DISTRICTS-1, 1, i, ylim=(0, 1000), xlim=(0, .2))
 #     plt.subplots_adjust(bottom=.07, top=.97, wspace=None, hspace=2)
